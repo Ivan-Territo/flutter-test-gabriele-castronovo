@@ -1,9 +1,6 @@
 class Room {
-  // TODO: Aggiungi qui le variabili della classe
-  // Suggerimento: guarda la struttura JSON nel README.md
 
   Room() {
-    // TODO: Inizializza le variabili della classe usando i parametri del costruttore
   }
 
   factory Room.fromJson(Map<String, dynamic> json) {

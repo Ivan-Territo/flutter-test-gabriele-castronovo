@@ -23,8 +23,8 @@ class ElencoRooms {
 
   // carica lista
   Future<void> caricaLista() async {
-    final rawList = await ApiService().getRooms();
-    listaRooms = rawList.map((x) => Room.fromJson(x)).toList();
+    final lista = await ApiService().getRooms();
+    listaRooms = lista.map((x) => Room.fromJson(x)).toList();
     if (kDebugMode) { print('✅ Caricati: ${listaRooms.length}'); }
   }
 }

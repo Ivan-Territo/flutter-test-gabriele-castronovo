@@ -9,6 +9,7 @@ class AppNavigator extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.grey[50],
       centerTitle: true,
       title: const Text('Sono la AppBar'),
     );

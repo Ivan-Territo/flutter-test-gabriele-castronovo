@@ -1,13 +1,17 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+class HomePage extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text('Homepage')),
-    );
-  }
+  HomePageState createState() => HomePageState();
+}
+
+class HomePageState extends State<HomePage>{
+  int currentIndex = 0;
+
+  final List<Widget> screens = [
+    // HomeScreen(),
+    // BlogScreen(),
+    // AboutUsScreen(),
+    // MoreScreen()
+  ];
 }

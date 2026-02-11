@@ -62,7 +62,7 @@ class ApiService {
         // L'API restituisce un array con un oggetto che contiene la chiave "rooms"
         final List<dynamic> data = response.data;
         if (data.isNotEmpty && data[0]['rooms'] != null) {
-          final List<dynamic> rooms = data[0]['rooms'];
+          List<dynamic> rooms = data[0]['rooms'];
           return rooms.cast<Map<String, dynamic>>();
         }
         return [];

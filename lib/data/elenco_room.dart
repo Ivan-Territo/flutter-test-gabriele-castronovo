@@ -21,7 +21,7 @@ class ElencoRooms {
     }
   }
 
-  // carica lista
+  // carica lista bella assaiiii
   Future<void> caricaLista() async {
     final lista = await ApiService().getRooms();
     listaRooms = lista.map((x) => Room.fromJson(x)).toList();

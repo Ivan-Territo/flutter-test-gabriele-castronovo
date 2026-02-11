@@ -3,7 +3,7 @@ import '../pages/home_page.dart';
 
 class AppRoutes {
 
-  static const home = '/';
+  static const home = '/home';
 
   static Map<String, WidgetBuilder> routes = {
     home: (context) => HomePage(),

@@ -9,7 +9,7 @@ void main() async {
   try {
     await Future.wait([
       gestoreRooms.caricaLista(),
-      // altre robe da caricare
+      // altre robe da caricaree
     ]);
   } catch (e) {
     if (kDebugMode) print("❌ Errore durante l'estrazione dei dati: $e");

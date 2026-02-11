@@ -20,7 +20,7 @@ class ApiService {
       }
       return [];
     } catch (e) {
-      debugPrint('Errore getRooms: $e');
+      if (kDebugMode) { print('❌ Errore getRooms: $e'); }
       return [];
     }
   }

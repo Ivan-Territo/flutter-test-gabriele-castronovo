@@ -75,19 +75,19 @@ class MainImage extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: SizedBox(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                "Secure Your Dream Vacation With a Reservation",
-                                maxLines: 2,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Secure Your Dream Vacation With a Reservation",
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 39,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
-                            )
+                            ),
+                          )
                         ),
                       ),
                       const Spacer(flex: 1),
@@ -185,10 +185,78 @@ class MainImage extends StatelessWidget {
                       ),
                       const Spacer(flex: 1),
                     ],
-                  )
+                  ),
+
+                  const SizedBox(height: 50),
 
                   // testo in basso
+                  Padding(
 
+                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 5),
+                    child: Row(
+                      children: [
+
+                        // testo a sinistra
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            "We believe in the power of the great outdoors. We think that everyone deserves the chance to explore the wild to find their very own adventure.",
+                            maxLines: 3,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                        ),
+
+                        const Spacer(flex: 3),
+
+                        // testo a destra
+                        Expanded(
+                          flex: 2,
+                          child:Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+
+                            children: [
+
+                              // numeri
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+
+                                children: const [
+                                  Text("121+", style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                                  SizedBox(width: 50),
+                                  Text("80+", style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                                  SizedBox(width: 53),
+                                  Text("1k", style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                                  SizedBox(width: 25),
+                                ],
+                              ),
+                              const SizedBox(height: 4),
+
+                              // testi sotto
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+
+                                children: const [
+                                  Text("Capital raised", style: TextStyle(color: Colors.white, fontSize: 8)),
+                                  SizedBox(width: 15),
+                                  Text("Happy customers", style: TextStyle(color: Colors.white, fontSize: 8)),
+                                  SizedBox(width: 15),
+                                  Text("Property options", style: TextStyle(color: Colors.white, fontSize: 8)),
+                                ],
+                              ),
+                            ],
+                          )
+                        ),
+                      ],
+                    )
+                  )
                 ],
               )
             ],
@@ -199,16 +267,3 @@ class MainImage extends StatelessWidget {
   }
 }
 
-
-/*
-"We believe in the power of the great outdoors. "
-      "We think that everyone deserves the chance to explore "
-      "the wild to find their very own adventure."
-
-         _buildStat("121+", "Capital raised",
-            numberSize, labelSize),
-        _buildStat("80K", "Happy customers",
-            numberSize, labelSize),
-        _buildStat("1K+", "Property options",
-            numberSize, labelSize),
- */

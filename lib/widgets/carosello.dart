@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login_profile_lesson/pages/dettagli_room.dart';
 import '../data/elenco_room.dart';
 import './card_room.dart';
 
@@ -152,9 +153,16 @@ class _CaroselloState extends State<Carosello> {
                         controller: _controller,
                         itemSnapping: true,
                         flexWeights: const <int>[1, 2, 1],
+
                         onTap: (int index) {
-                          if (kDebugMode) { print('✅ Cliccato indice $index'); }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DettagliRoom(room: gestoreRooms.listaRooms[index]),
+                            ),
+                          );
                         },
+
                         children: gestoreRooms.listaRooms.map((room) => CardRoom(room: room)).toList(),
                       ),
                     ),

@@ -91,15 +91,11 @@ class AppNavigator extends StatelessWidget implements PreferredSizeWidget {
             },
             label: const Text("Sing up"),
           ),
-
-
         )
-
       ],
     );
   }
-
-
+  
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

@@ -42,7 +42,7 @@ class _CaroselloState extends State<Carosello> {
 
     double fontTesto1 = (screenWidth * 0.0333);
     double fontTesto2 = (screenWidth * 0.01);
-    double altezzaBoxTesto = (screenWidth * 0.15);
+    double altezzaBoxTesto = (screenWidth * 0.10);
     int flexTesto = screenWidth > 1000 ? 1 : 2;
 
     return Expanded(
@@ -129,20 +129,34 @@ class _CaroselloState extends State<Carosello> {
                   alignment: Alignment.center,
                   children: [
 
-                    // carosello
-                    CarouselView.weighted(
-                      controller: _controller,
-                      itemSnapping: true,
-                      flexWeights: const <int>[1, 2, 1],
+                    // in caso di scroll aggiorna _currentIndex (raramente scorre di 2)
+                    NotificationListener<ScrollUpdateNotification>(
+                      onNotification: (notification) {
+                        if (notification.metrics.maxScrollExtent > 0) {
 
-                      onTap: (int index) {
-                        setState(() {
-                          _currentIndex = index;}
-                        );
-                        if (kDebugMode) { print('✅ Cliccato indice $index'); }
+                          double progress = notification.metrics.pixels / notification.metrics.maxScrollExtent;
+                          double rawIndex = progress * (gestoreRooms.listaRooms.length - 1);
+
+                          int newIndex = rawIndex.floor();
+                          newIndex = newIndex.clamp(0, gestoreRooms.listaRooms.length - 1);
+
+                          if (newIndex != _currentIndex) {
+                            setState(() { _currentIndex = newIndex; });
+                          }
+                        }
+                        return false;
                       },
 
-                      children: gestoreRooms.listaRooms.map((room) => CardRoom(room: room)).toList(),
+                      // carosello
+                      child: CarouselView.weighted(
+                        controller: _controller,
+                        itemSnapping: true,
+                        flexWeights: const <int>[1, 2, 1],
+                        onTap: (int index) {
+                          if (kDebugMode) { print('✅ Cliccato indice $index'); }
+                        },
+                        children: gestoreRooms.listaRooms.map((room) => CardRoom(room: room)).toList(),
+                      ),
                     ),
 
                     // freccia sinistra

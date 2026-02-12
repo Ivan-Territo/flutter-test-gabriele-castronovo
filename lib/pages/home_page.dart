@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MainImage(),
+              const SizedBox(height: 20),
               Carosello(),
             ],
           )

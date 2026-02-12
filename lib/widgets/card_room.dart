@@ -80,7 +80,7 @@ class CardRoom extends StatelessWidget {
                         fontSize: 16,
                         shadows: [
                           Shadow(
-                            blurRadius: 5.0,
+                            blurRadius: 5,
                             color: Colors.black,
                             offset: Offset(2, 2),
                           ),

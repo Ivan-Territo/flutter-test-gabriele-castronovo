@@ -75,7 +75,17 @@ class CardRoom extends StatelessWidget {
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
                       room.nomeStanza ?? "",
-                      style: TextStyle(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 5.0,
+                            color: Colors.black,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                     )
                   ),
                 ),

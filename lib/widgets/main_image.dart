@@ -8,13 +8,10 @@ class MainImage extends StatelessWidget implements PreferredSizeWidget {
 
     // impostazioni schermo
     double screenWidth = MediaQuery.sizeOf(context).width;
-
-    double fontTitolo = screenWidth * 0.032;
-
+    double fontTitolo = (screenWidth * 0.033).clamp(16, 50);
     int ricercaSize = (3000 / screenWidth).round().clamp(1, 8);
-
-    double fontTestoSinistra = screenWidth * 0.014;
-    int spacerBasso = (screenWidth / 200).round().clamp(1, 10);
+    double fontTestoSinistra = (screenWidth * 0.014).clamp(6, 16);
+    int spacerBasso = (screenWidth / 200).round().clamp(1, 20);
 
 
     return Expanded(
@@ -75,9 +72,11 @@ class MainImage extends StatelessWidget implements PreferredSizeWidget {
               ),
 
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+
+                  const Spacer(flex: 3),
 
                   // testo in alto
                   Row(
@@ -86,24 +85,26 @@ class MainImage extends StatelessWidget implements PreferredSizeWidget {
                       Expanded(
                         flex: 2,
                         child: SizedBox(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Secure Your Dream Vacation With a Reservation",
-                              maxLines: 2,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: fontTitolo,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Secure Your Dream Vacation With a Reservation",
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: fontTitolo,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                          )
+                            )
                         ),
                       ),
                       const Spacer(flex: 1),
                     ],
                   ),
+
+                  const Spacer(flex: 1),
 
                   // ricerca room
                   Row(
@@ -209,9 +210,11 @@ class MainImage extends StatelessWidget implements PreferredSizeWidget {
                     ],
                   ),
 
+                  const Spacer(flex: 4),
+
                   // testo in basso
                   Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
                     child: Row(
                       children: [
 
@@ -248,11 +251,11 @@ class MainImage extends StatelessWidget implements PreferredSizeWidget {
                                   textBaseline: TextBaseline.alphabetic,
                                   children: [
                                     Text("121+", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold)),
-                                    SizedBox(width: 115),
+                                    const SizedBox(width: 105),
                                     Text("80+", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold)),
-                                    SizedBox(width: 175),
+                                    const SizedBox(width: 160),
                                     Text("1k", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold)),
-                                    SizedBox(width: 90),
+                                    const SizedBox(width: 90),
                                   ],
                                 ),
                                 const SizedBox(height: 4),
@@ -264,9 +267,9 @@ class MainImage extends StatelessWidget implements PreferredSizeWidget {
                                   textBaseline: TextBaseline.alphabetic,
                                   children: [
                                     Text("Capital raised", style: TextStyle(color: Colors.white, fontSize: 28)),
-                                    SizedBox(width: 15),
+                                    const SizedBox(width: 15),
                                     Text("Happy customers", style: TextStyle(color: Colors.white, fontSize: 28)),
-                                    SizedBox(width: 15),
+                                    const SizedBox(width: 15),
                                     Text("Property options", style: TextStyle(color: Colors.white, fontSize: 28)),
                                   ],
                                 ),
@@ -289,4 +292,3 @@ class MainImage extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-

@@ -7,94 +7,80 @@ class AppNavigator extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
 
-    return AppBar(
+    double screenWidth = MediaQuery.sizeOf(context).width;
+    double padding = screenWidth * 0.018;
 
+    return AppBar(
       backgroundColor: Colors.grey[50],
       centerTitle: true,
+      titleSpacing: 0,
 
       // icona a sinistra
-      leading: Icon(
-        Icons.waves,
-        color: Colors.teal,
-        size: 32,
+      leading: Padding(
+        padding: EdgeInsets.symmetric(horizontal: padding),
+        child: Icon(Icons.waves, color: Colors.teal, size: 28),
       ),
 
-      // navigazione centrale
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+      // title
+      title: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildMenuItem(context, "Home", AppRoutes.home),
+            _buildMenuItem(context, "Blog", AppRoutes.blog),
+            _buildMenuItem(context, "About us", AppRoutes.aboutus),
 
-        children: [
-
-          // navigazione home
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.black,
-              textStyle: const TextStyle(fontWeight: FontWeight.bold),
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                minimumSize: Size.zero,
+              ),
+              onPressed: () {},
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Text("More", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Icon(Icons.keyboard_arrow_down, size: 16),
+                ],
+              ),
             ),
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.home);
-            },
-            child: const Text("Home"),
-          ),
-
-          // navigazione blog
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.black,
-              textStyle: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.blog);
-            },
-            child: const Text("Blog"),
-          ),
-
-          // navigazione about us
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.black,
-              textStyle: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.aboutus);
-            },
-            child: const Text("About us"),
-          ),
-
-          // more
-          TextButton.icon(
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.black,
-              textStyle: const TextStyle(fontWeight: FontWeight.bold),
-              iconAlignment: IconAlignment.end,
-            ),
-            onPressed: () { },
-            icon: const Icon(Icons.keyboard_arrow_down, size: 20),
-            label: const Text("More"),
-          ),
-        ],
+          ],
+        ),
       ),
 
       // bottone a destra
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 16),
+          padding: EdgeInsets.symmetric(horizontal: padding),
           child: ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.teal,
               foregroundColor: Colors.white,
             ),
-            onPressed: () {
-              // si apre un menu penso?
-            },
-            label: const Text("Sing up"),
+            onPressed: () { },
+            label: const Text("Sign up"),
           ),
         )
       ],
     );
   }
+
+// costruisce l'item del menu
+  Widget _buildMenuItem(BuildContext context, String text, String route) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.black,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        minimumSize: Size.zero,
+      ),
+      onPressed: () => Navigator.pushNamed(context, route),
+      child: Text(text, style: const TextStyle(fontWeight: FontWeight.bold)),
+    );
+  }
+
   
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

@@ -129,12 +129,11 @@ class MainImage extends StatelessWidget {
                               ),
                               onPressed: () {},
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 mainAxisSize: MainAxisSize.min,
                                 children: const [
                                   Icon(Icons.location_on, size: 20),
-                                  SizedBox(width: 8),
                                   Text("Location"),
-                                  SizedBox(width: 8),
                                   Icon(Icons.unfold_more, size: 20),
                                 ],
                               ),
@@ -148,26 +147,32 @@ class MainImage extends StatelessWidget {
                               ),
                               onPressed: () { },
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 mainAxisSize: MainAxisSize.min,
                                 children: const [
                                   Icon(Icons.calendar_today, size: 18),
-                                  SizedBox(width: 8),
                                   Text("Check-in - Check-out"),
-                                  SizedBox(width: 8),
                                   Icon(Icons.unfold_more, size: 20),
                                 ],
                               ),
                             ),
 
                             // person
-                            TextButton.icon(
+                            TextButton(
                               style: TextButton.styleFrom(
                                 foregroundColor: Colors.grey[600],
                                 textStyle: const TextStyle(fontWeight: FontWeight.bold),
                               ),
                               onPressed: () { },
-                              icon: const Icon(Icons.person_outline, size: 20),
-                              label: const Text("Person"),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  Icon(Icons.person_outline, size: 18),
+                                  Text("Person"),
+                                  Icon(Icons.unfold_more, size: 20),
+                                ],
+                              ),
                             ),
 
                             // search

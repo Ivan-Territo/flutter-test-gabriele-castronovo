@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 
-class MainImage extends StatelessWidget {
+class MainImage extends StatelessWidget implements PreferredSizeWidget {
   const MainImage({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    // impostazioni schermo
+    double screenWidth = MediaQuery.sizeOf(context).width;
+
+    double fontTitolo = screenWidth * 0.032;
+
+    int ricercaSize = (3000 / screenWidth).round().clamp(1, 8);
+
+    double fontTestoSinistra = screenWidth * 0.014;
+    int spacerBasso = (screenWidth / 200).round().clamp(1, 10);
+
 
     return Expanded(
       child: Container(
@@ -55,7 +66,7 @@ class MainImage extends StatelessWidget {
                       end: Alignment.bottomCenter,
                       colors: [
                         Colors.transparent,
-                        Colors.black.withValues(alpha: 0.7),
+                        Colors.black38,
                       ],
                       stops: const [0.6, 1.0],
                     ),
@@ -82,7 +93,7 @@ class MainImage extends StatelessWidget {
                               maxLines: 2,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 39,
+                                fontSize: fontTitolo,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -97,170 +108,174 @@ class MainImage extends StatelessWidget {
                   // ricerca room
                   Row(
                     children: [
-                      const Spacer(flex: 1),
-                      Container(
+                      Spacer(flex: 1),
 
-                        padding: const EdgeInsets.all(10),
+                      Expanded(
+                        flex: ricercaSize,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
 
-                        // decorazione
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(40),
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Colors.black38,
-                                blurRadius: 2,
-                                spreadRadius: 1
+                          // decorazione
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(40),
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: 2,
+                                  spreadRadius: 1
+                              ),
+                            ],
+                          ),
+
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+
+                              children: [
+
+                                // location
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.grey[600],
+                                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Icon(Icons.location_on, size: 18),
+                                      Text("Location"),
+                                      Icon(Icons.unfold_more, size: 18),
+                                    ],
+                                  ),
+                                ),
+
+                                // calendario
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.grey[600],
+                                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () { },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Icon(Icons.calendar_today, size: 18),
+                                      Text("Check-in - Check-out"),
+                                      Icon(Icons.unfold_more, size: 18),
+                                    ],
+                                  ),
+                                ),
+
+                                // person
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.grey[600],
+                                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () { },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Icon(Icons.person_outline, size: 18),
+                                      Text("Person"),
+                                      Icon(Icons.unfold_more, size: 18),
+                                    ],
+                                  ),
+                                ),
+
+                                // search
+                                ElevatedButton.icon(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.teal,
+                                    foregroundColor: Colors.white,
+                                  ),
+                                  onPressed: () { },
+                                  icon: const Icon(Icons.search, size: 18),
+                                  label: const Text("Search"),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-
-                          children: [
-
-                            // location
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.grey[600],
-                                textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              onPressed: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  Icon(Icons.location_on, size: 20),
-                                  Text("Location"),
-                                  Icon(Icons.unfold_more, size: 20),
-                                ],
-                              ),
-                            ),
-
-                            // calendario
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.grey[600],
-                                textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              onPressed: () { },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  Icon(Icons.calendar_today, size: 18),
-                                  Text("Check-in - Check-out"),
-                                  Icon(Icons.unfold_more, size: 20),
-                                ],
-                              ),
-                            ),
-
-                            // person
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.grey[600],
-                                textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              onPressed: () { },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  Icon(Icons.person_outline, size: 18),
-                                  Text("Person"),
-                                  Icon(Icons.unfold_more, size: 20),
-                                ],
-                              ),
-                            ),
-
-                            // search
-                            ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.teal,
-                                foregroundColor: Colors.white,
-                              ),
-                              onPressed: () { },
-                              icon: const Icon(Icons.search, size: 20),
-                              label: const Text("Search"),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                      const Spacer(flex: 1),
+                      Spacer(flex: 1),
                     ],
                   ),
 
-                  const SizedBox(height: 50),
-
                   // testo in basso
                   Padding(
-
                     padding: const EdgeInsets.only(left: 15, right: 15, bottom: 5),
                     child: Row(
                       children: [
 
                         // testo a sinistra
                         Expanded(
-                          flex: 2,
+                          flex: 8,
                           child: Text(
                             "We believe in the power of the great outdoors. We think that everyone deserves the chance to explore the wild to find their very own adventure.",
                             maxLines: 3,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: fontTestoSinistra,
                               color: Colors.grey[400],
                             ),
                           ),
                         ),
 
-                        const Spacer(flex: 3),
+                        Spacer(flex: spacerBasso),
 
                         // testo a destra
                         Expanded(
-                          flex: 2,
-                          child:Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                          flex: 8,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerRight,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
 
-                            children: [
+                              children: [
+                                // numeri
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Text("121+", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold)),
+                                    SizedBox(width: 115),
+                                    Text("80+", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold)),
+                                    SizedBox(width: 175),
+                                    Text("1k", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold)),
+                                    SizedBox(width: 90),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
 
-                              // numeri
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.baseline,
-                                textBaseline: TextBaseline.alphabetic,
-
-                                children: const [
-                                  Text("121+", style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
-                                  SizedBox(width: 50),
-                                  Text("80+", style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
-                                  SizedBox(width: 53),
-                                  Text("1k", style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
-                                  SizedBox(width: 25),
-                                ],
-                              ),
-                              const SizedBox(height: 4),
-
-                              // testi sotto
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.baseline,
-                                textBaseline: TextBaseline.alphabetic,
-
-                                children: const [
-                                  Text("Capital raised", style: TextStyle(color: Colors.white, fontSize: 8)),
-                                  SizedBox(width: 15),
-                                  Text("Happy customers", style: TextStyle(color: Colors.white, fontSize: 8)),
-                                  SizedBox(width: 15),
-                                  Text("Property options", style: TextStyle(color: Colors.white, fontSize: 8)),
-                                ],
-                              ),
-                            ],
-                          )
+                                // testi sotto
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Text("Capital raised", style: TextStyle(color: Colors.white, fontSize: 28)),
+                                    SizedBox(width: 15),
+                                    Text("Happy customers", style: TextStyle(color: Colors.white, fontSize: 28)),
+                                    SizedBox(width: 15),
+                                    Text("Property options", style: TextStyle(color: Colors.white, fontSize: 28)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
-                    )
+                    ),
                   )
                 ],
               )
@@ -270,5 +285,8 @@ class MainImage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
